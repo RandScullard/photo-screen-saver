@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "bin",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "files": [
+    "src/main.ts",
+    "src/index.ts"
+  ]
+}

@@ -1,0 +1,38 @@
+html
+{
+	height: 100%;
+}
+
+body
+{
+	height: 100%;
+	margin: 0;
+	background-color: #000;
+	overflow: hidden;
+	cursor: none;
+}
+
+.photo
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: none;
+	opacity: 0;
+	transition: opacity 5s linear, transform 65s linear;
+}
+
+.photo.visible
+{
+	opacity: 1;
+	transform: scale(1.3);
+}
+
+.photo img
+{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
