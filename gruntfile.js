@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 			}
 		},
 
-		clean: ['bin', 'package']
+		clean: ['.tscache', 'bin', 'obj', 'package']
 	});
 
 	grunt.loadNpmTasks('grunt-ts');

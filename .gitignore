@@ -1,5 +1,11 @@
 .baseDir.ts
+*.csproj
+*.csproj.user
+*.sln
+*.suo
+.localhistory/
 .tscache/
 node_modules/
 bin/
+obj/
 package/
