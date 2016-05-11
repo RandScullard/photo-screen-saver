@@ -1,6 +1,8 @@
 photo-screen-saver
 ==================
 
+![icon.png](img/icon.png)
+
 Windows screen saver that displays a photo slideshow, based on the <a href="http://electron.atom.io/">Electron</a> framework.
 
 Why?

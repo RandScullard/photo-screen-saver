@@ -20,7 +20,7 @@
   "dependencies": {
     "jquery": "^2.2.3",
     "concat-stream": "^1.5.1",
-    "electron-prebuilt": "^0.36.12"
+    "electron-prebuilt": "^1.0.1"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
