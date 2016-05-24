@@ -5,7 +5,8 @@
 *.suo
 .localhistory/
 .tscache/
-node_modules/
 bin/
+graphic_design/
+node_modules/
 obj/
 package/
