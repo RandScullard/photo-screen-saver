@@ -10,8 +10,7 @@ module.exports = function (grunt) {
 		copy: {
 			toBin: {
 				files: [
-					{ expand: true, cwd: 'src', src: ['index.html', 'index.css', 'package.json'], dest: 'bin/' },
-					{ expand: true, src: ['node_modules/concat-stream/**', 'node_modules/jquery/**'], dest: 'bin/', dot: true }
+					{ expand: true, cwd: 'src', src: ['index.html', 'index.css', 'package.json'], dest: 'bin/' }
 				]
 			},
 			toScr: {
@@ -20,6 +19,15 @@ module.exports = function (grunt) {
 					src: 'package/photo-screen-saver-win32-x64/photo-screen-saver.exe', 
 					rename: function () { return 'package/photo-screen-saver-win32-x64/photo-screen-saver.scr' }
 				}]
+			}
+		},
+
+		'npm-command': {
+			default: {
+				options: {
+					cmd: 'install',
+					cwd: 'bin/'
+				}
 			}
 		},
 
@@ -44,8 +52,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-electron');
+	grunt.loadNpmTasks('grunt-npm-command');
 
 	grunt.registerTask('build', ['ts', 'copy:toBin']);
-	grunt.registerTask('package', ['electron', 'copy:toScr']);
+	grunt.registerTask('package', ['npm-command', 'electron', 'copy:toScr']);
 	grunt.registerTask('default', ['build', 'package']);
 };

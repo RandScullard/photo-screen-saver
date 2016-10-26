@@ -1,9 +1,19 @@
 {
   "name": "photo-screen-saver",
   "version": "0.0.1",
+  "description": "Windows screen saver that displays a photo slideshow, based on the Electron framework",
+  "license": "MIT",
+  "author": {
+    "name": "Rand Scullard",
+    "email": "rand@randscullard.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RandScullard/photo-screen-saver.git"
+  },
   "main": "main.js",
   "dependencies": {
-    "jquery": "^2.2.3",
-    "concat-stream": "^1.5.1"
+    "concat-stream": "^1.5.2",
+    "jquery": "^3.1.1"
   }
 }
