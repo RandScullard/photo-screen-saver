@@ -10,6 +10,8 @@ import fs = require("fs");
 var imageUrls: string[] = [];
 var imageNum = 0;
 
+const positions = [{left: 10, top: 10}, {left: 70, top: 10}, {left: 70, top: 70}, {left: 10, top: 70}];
+
 $(() =>
 {
 	$(document).on("click keydown", e => window.close());
@@ -36,6 +38,8 @@ $(() =>
 		shuffle(imageUrls);
 		loadNextImage();
 		window.setInterval(loadNextImage, 1 * 60 * 1000);
+		$('clock').css('opacity', '100');
+		window.setInterval(updateClock, 1000);
 	};
 
 	let useBing = true;
@@ -56,8 +60,8 @@ function loadImagesFromBingGallery(
 			res.setEncoding("utf8");
 			res.pipe(
 				concat(
-					{ encoding: "string" }, 
-					(src: string) => 
+					{ encoding: "string" },
+					(src: string) =>
 					{
 						src = `(function(){var window = {};${src}return window.BingGallery})()`;
 
@@ -137,6 +141,48 @@ function loadNextImage()
 			photo.addClass("visible");
 		})
 		.attr("src", url);
+
+		moveClock();
+}
+
+function updateClock() {
+	var date = new Date();
+	var pm : boolean = date.getHours() >= 12;
+	var hours : number = date.getHours();
+	if (pm) {
+		hours -= 12;
+	}
+	var hoursString : string = hours.toString();
+	if (hours < 10) {
+		hoursString = '0' + hoursString;
+	}
+	var noonString : string = 'AM';
+	if (pm) {
+		noonString = 'PM';
+	}
+	var minutes : number = date.getMinutes();
+	var minutesString : string = minutes.toString();
+	if (minutes < 10) {
+		minutesString = '0' + minutesString;
+	}
+	var seconds : number = date.getSeconds();
+	var secondsString : string = seconds.toString();
+	if (seconds < 10) {
+		secondsString = '0' + secondsString;
+	}
+
+	var time : string = hoursString + ':' + minutesString + ':' + secondsString + ' ' + noonString;
+	$('#clock').html(time);
+}
+
+function moveClock() {
+	$('#clock').css('opacity', '0');
+	setTimeout(function() {
+		var position = positions[getRandom(0, positions.length)];
+		$('.clock-container').css('left', position.left + '%');
+		$('.clock-container').css('top', position.top + '%');
+		$('#clock').css('opacity', '100');
+	}, 5000);
 }
 
 // Returns a random integer between min (inclusive) and max (exclusive)

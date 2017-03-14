@@ -10,13 +10,13 @@ module.exports = function (grunt) {
 		copy: {
 			toBin: {
 				files: [
-					{ expand: true, cwd: 'src', src: ['index.html', 'index.css', 'package.json'], dest: 'bin/' }
+					{ expand: true, cwd: 'src', src: ['index.html', 'index.css', 'package.json', 'fonts/**'], dest: 'bin/' }
 				]
 			},
 			toScr: {
-				files: [{ 
-					expand: true, 
-					src: 'package/photo-screen-saver-win32-x64/photo-screen-saver.exe', 
+				files: [{
+					expand: true,
+					src: 'package/photo-screen-saver-win32-x64/photo-screen-saver.exe',
 					rename: function () { return 'package/photo-screen-saver-win32-x64/photo-screen-saver.scr' }
 				}]
 			}

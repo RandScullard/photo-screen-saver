@@ -36,3 +36,30 @@ body
 	height: 100%;
 	object-fit: cover;
 }
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('fonts/Roboto-Thin.ttf');
+}
+
+.clock-container {
+	position: fixed;
+
+	top: 10%;
+	left: 10%;
+
+	z-index: 1000;
+}
+
+#clock {
+	color: white;
+
+	font-size: 5em;
+
+	font-family: 'Roboto';
+	font-weight: lighter;
+
+	opacity: 0;
+
+	transition: opacity 5s;
+}
