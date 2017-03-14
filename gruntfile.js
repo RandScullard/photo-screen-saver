@@ -37,7 +37,6 @@ module.exports = function (grunt) {
 					name: 'photo-screen-saver',
 					dir: 'bin',
 					out: 'package',
-					version: '0.36.12',
 					platform: 'win32',
 					arch: 'x64',
 					overwrite: true

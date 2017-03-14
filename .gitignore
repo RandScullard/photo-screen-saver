@@ -3,6 +3,7 @@
 *.csproj.user
 *.sln
 *.suo
+.history/
 .localhistory/
 .tscache/
 bin/
