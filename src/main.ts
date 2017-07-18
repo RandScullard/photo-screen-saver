@@ -1,7 +1,4 @@
-/// <reference path="../typings/node/node.d.ts" />
-/// <reference path="../typings/github-electron/github-electron.d.ts" />
-
-const electron = require("electron");
+import electron = require("electron");
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 

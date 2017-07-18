@@ -1,5 +1,3 @@
-﻿/// <reference path="../node/node.d.ts" />
-
 declare module "concat-stream" 
 {
 	import stream = require("stream");
@@ -22,4 +20,3 @@ declare module "concat-stream"
 
 	export = concatStream;
 }
-

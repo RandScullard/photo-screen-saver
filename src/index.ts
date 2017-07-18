@@ -1,7 +1,4 @@
-﻿/// <reference path="../typings/concat-stream/concat-stream.d.ts" />
-/// <reference path="../typings/jquery/jquery.d.ts" />
-
-import $ = require("jquery");
+﻿import $ = require("jquery");
 import https = require("https");
 import vm = require("vm");
 import concat = require("concat-stream");
@@ -64,7 +61,7 @@ function loadImagesFromBingGallery(
 						let bingGallery: any = null;
 						try
 						{
-							bingGallery = vm.runInThisContext(src, "browsedata");
+							bingGallery = vm.runInThisContext(src);
 						}
 						catch(err)
 						{
