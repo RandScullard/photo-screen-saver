@@ -1,9 +1,9 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
-		ts: {
-			default: {
-				src: ['src/*.ts'],
-				outDir: 'bin'
+		exec: {
+			tsc: {
+				command: "node ./node_modules/typescript/bin/tsc",
+				exitCode: [0, 2]
 			}
 		},
 
@@ -44,16 +44,16 @@ module.exports = function (grunt) {
 			}
 		},
 
-		clean: ['.tscache', 'bin', 'obj', 'package']
+		clean: ['bin', 'obj', 'package']
 	});
 
-	grunt.loadNpmTasks('grunt-ts');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-electron');
+	grunt.loadNpmTasks("grunt-exec");
 	grunt.loadNpmTasks('grunt-npm-command');
 
-	grunt.registerTask('build', ['ts', 'copy:toBin']);
+	grunt.registerTask('build', ['exec:tsc', 'copy:toBin']);
 	grunt.registerTask('package', ['npm-command', 'electron', 'copy:toScr']);
 	grunt.registerTask('default', ['build', 'package']);
 };

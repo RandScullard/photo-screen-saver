@@ -13,7 +13,7 @@
   },
   "main": "main.js",
   "dependencies": {
-    "concat-stream": "^1.5.2",
-    "jquery": "^3.1.1"
+    "concat-stream": "^1.6.0",
+    "jquery": "^3.2.1"
   }
 }

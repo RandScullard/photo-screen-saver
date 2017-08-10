@@ -1,6 +1,6 @@
 {
   "name": "photo-screen-saver",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Windows screen saver that displays a photo slideshow, based on the Electron framework",
   "license": "MIT",
   "author": {
@@ -23,14 +23,14 @@
     "jquery": "^3.2.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.2.8",
-    "@types/node": "^8.0.14",
+    "@types/jquery": "^3.2.10",
+    "@types/node": "^8.0.19",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-electron": "^5.0.0",
+    "grunt-exec": "^2.0.0",
     "grunt-npm-command": "^0.1.2",
-    "grunt-ts": "^5.5.1",
     "typescript": "^2.4.1"
   }
 }

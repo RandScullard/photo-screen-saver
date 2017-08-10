@@ -1,4 +1,5 @@
-import electron = require("electron");
+import * as electron from "electron";
+
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 

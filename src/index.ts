@@ -1,13 +1,51 @@
-﻿import $ = require("jquery");
-import https = require("https");
-import vm = require("vm");
-import concat = require("concat-stream");
-import fs = require("fs");
+﻿import * as $ from "jquery";
+import * as https from "https";
+import * as vm from "vm";
+import * as concat from "concat-stream";
+import * as fs from "fs";
+import { getRandom, isNullOrEmpty, shuffle } from "./utils";
+import { Photo } from "./photo";
 
-var imageUrls: string[] = [];
-var imageNum = 0;
+// Uncomment ONE of the following photo sources:
+import { getPhotos } from "./500px";
+// import { getPhotos } from "./flickr";
+// import { getPhotos } from "./local-images";
+
+
+const PHOTO_INTERVAL = 60 * 1000;
+
+var currImageIdx = 0;
 
 $(() =>
+{
+	// Delay everything until the window is visible on-screen (see the delay in main.ts).
+	window.setTimeout(run, 2100);
+});
+
+function run()
+{
+	setupEvents();
+
+	getPhotos()
+	.then(photos =>
+	{
+		if(photos.length === 0)
+			throw new Error("No photos found that meet criteria.");
+
+		console.log(`${photos.length} photos found that meet criteria`);
+
+		shuffle(photos);
+		loadNextImage(photos);
+		window.setInterval(() => loadNextImage(photos), PHOTO_INTERVAL);
+	})
+	.catch(err =>
+	{
+		window.alert(err.toString());
+		window.close();
+	});
+}
+
+function setupEvents()
 {
 	$(document).on("click keydown", e => window.close());
 
@@ -27,132 +65,51 @@ $(() =>
 				window.close();
 		}
 	});
-
-	let startSlideshow = () =>
-	{
-		shuffle(imageUrls);
-		loadNextImage();
-		window.setInterval(loadNextImage, 1 * 60 * 1000);
-	};
-
-	let useBing = true;
-
-	if(useBing)
-		loadImagesFromBingGallery(startSlideshow);
-	else
-		loadImagesFromFolder("C:/ScreenSaver/", startSlideshow);
-});
-
-function loadImagesFromBingGallery(
-	startSlideshow: () => void)
-{
-	https.get(
-		{ host: "www.bing.com", path: "/gallery/home/browsedata" },
-		res =>
-		{
-			res.setEncoding("utf8");
-			res.pipe(
-				concat(
-					{ encoding: "string" }, 
-					(src: string) => 
-					{
-						src = `(function(){var window = {};${src}return window.BingGallery})()`;
-
-						let bingGallery: any = null;
-						try
-						{
-							bingGallery = vm.runInThisContext(src);
-						}
-						catch(err)
-						{
-							window.alert(`Failed to parse image list from Bing Gallery: ${err.message}`);
-							return;
-						}
-
-						let imageNames: string[] = bingGallery.browseData.imageNames;
-						imageUrls = imageNames.map(name => `http://az619519.vo.msecnd.net/files/${name}_1920x1200.jpg`);
-
-						startSlideshow();
-					}
-				)
-			);
-		}
-	)
-	.on("error", (err: any) =>
-	{
-		window.alert(`Failed to load image list from Bing Gallery: ${err.message}`);
-	});
 }
 
-function loadImagesFromFolder(
-	folderPath:     string,
-	startSlideshow: () => void)
+function loadNextImage(
+	photos: Photo[])
 {
-	try
-	{
-		let fileNames = fs.readdirSync(folderPath);
-		imageUrls = fileNames
-			.filter(fn => fn.match(/\.(jpg|jpeg)$/i) != null)
-			.map(fn => `file:///${folderPath}${fn}`);
+	$(".photo:not(:last)").add("label:not(:last)").remove();
 
-		startSlideshow();
-	}
-	catch(err)
-	{
-		window.alert(`Failed to load image list from folder "${folderPath}": ${err.message}`);
-	}
-}
+	let photo = photos[currImageIdx];
+	console.log(`imageNum: ${currImageIdx} url: ${photo.url}`);
 
-function loadNextImage()
-{
-	$(document.body).children(".photo:not(:last-child)").remove();
-
-	let url = imageUrls[imageNum];
-	console.log(`imageNum: ${imageNum} url: ${url}`);
-
-	imageNum++;
-	if(imageNum === imageUrls.length)
-		imageNum = 0;
+	currImageIdx++;
+	if(currImageIdx >= photos.length)
+		currImageIdx = 0;
 
 	let xOrigin = getRandom(0, 100);
 	let yOrigin = getRandom(0, 100);
 
-	let photo =
-		$("<div class='photo'/>")
+	let photoDiv = $("<div class='photo'/>")
 		.css("transform-origin", `${xOrigin}% ${yOrigin}%`)
 		.appendTo($(document.body));
 
+	let caption = "";
+	if(!isNullOrEmpty(photo.title) || !isNullOrEmpty(photo.attribution))
+	{
+		if(isNullOrEmpty(photo.title))
+			photo.title = "(Untitled)";
+
+		 caption = `${photo.title} ${photo.attribution}`;
+	}
+
+	let label = $("<label/>")
+		.addClass(`pos${currImageIdx % 3}`)
+		.text(caption)
+		.appendTo($(document.body));
+
 	$("<img/>")
-		.appendTo(photo)
+		.appendTo(photoDiv)
 		.on("error", e =>
 		{
-			photo.remove();
-			loadNextImage();
+			photoDiv.add(label).remove();
+			loadNextImage(photos);
 		})
 		.on("load", e =>
 		{
-			photo.addClass("visible");
+			photoDiv.add(label).addClass("visible");
 		})
-		.attr("src", url);
-}
-
-// Returns a random integer between min (inclusive) and max (exclusive)
-function getRandom(
-	min: number,
-	max: number)
-{
-	return Math.floor(Math.random() * (max - min)) + min;
-}
-
-// Randomize array element order in-place using Durstenfeld shuffle algorithm.
-function shuffle(
-	array: Array<any>)
-{
-	for(let i = array.length - 1; i > 0; i--)
-	{
-		let j = Math.floor(Math.random() * (i + 1));
-		let temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
-	}
+		.attr("src", photo.url);
 }

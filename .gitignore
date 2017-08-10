@@ -1,13 +1,6 @@
-.baseDir.ts
-*.csproj
-*.csproj.user
-*.sln
-*.suo
 .history/
 .localhistory/
-.tscache/
 bin/
 graphic_design/
 node_modules/
-obj/
 package/

@@ -36,3 +36,41 @@ body
 	height: 100%;
 	object-fit: cover;
 }
+
+label
+{
+	display: block;
+	position: absolute;
+	white-space: nowrap;
+	color: rgba(255, 255, 255, 0.4);
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 6px 8px;
+	border-radius: 3px;
+	opacity: 0;
+	transition: opacity 5s linear;
+}
+
+label.visible
+{
+	opacity: 1;
+}
+
+label.pos0
+{
+	right: 10px;
+	top: 10px;
+}
+
+label.pos1
+{
+	right: 10px;
+	bottom: 10px;
+}
+
+label.pos2
+{
+	left: 10px;
+	top: 10px;
+}
