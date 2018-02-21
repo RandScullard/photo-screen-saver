@@ -13,7 +13,9 @@ interface _500pxPhotoData
 
 interface _500pxPhoto
 {
-	image_url: string;
+	images: Array<{
+		url: string;
+	}>;
 	width: number;
 	height: number;
 	name: string;
@@ -31,7 +33,7 @@ export function getPhotos(): Promise<Photo[]>
 
 		let photos = photoData.photos
 		.map(photo => ({
-			url: photo.image_url,
+			url: photo.images[0].url,
 			width: photo.width,
 			height: photo.height,
 			title: photo.name,
