@@ -57,21 +57,20 @@ If you want to stay on the safe side, you can always use your own local folder o
 
 ## How to Build
 
-**Prerequisites:** This project requires <a href="https://nodejs.org">Node.js</a> -- if you've read this far, you 
-probably already have it. The build uses <a href="http://gruntjs.com/">Grunt</a>, so if you've never installed grunt-cli, run:
-
-    npm install -g grunt-cli
-
-**Build:** To build, go to the project folder and run the following commands:
+**Install:** This project requires <a href="https://nodejs.org">Node.js</a> -- if you've read this far, you 
+probably already have it. Once you have Node.js, go to the project folder and run the following command:
 
     npm install
-    grunt
 
-**Run:** Once the build is complete, you have a couple of options. If you want to quickly fire it up and see what it does, run:
+**Build:** Go to the project folder and run the following command:
+
+    npm run build
+
+**Run:** Once the build is complete, you have a couple of options. If you want to quickly fire it up and see what it does, go to the project folder and run:
 
     npm start
 
-**Install:** If you want to install it as a screen saver, look in the `package\photo-screen-saver-win32-x64` subfolder 
+If you want to install it as a screen saver, look in the `package\photo-screen-saver-win32-x64` subfolder 
 and find the file `photo-screen-saver.scr`. Right-click the file and choose `Install`. When you go to the Windows screen 
 saver settings, you'll see that `photo-screen-saver` is now your selected screen saver.
 
@@ -82,7 +81,7 @@ with a .scr extension. The program just needs to display a topmost full-screen w
 exit on mouse or keyboard activity. These requirements are really easy to meet in Electron!
 
 **Note:** This project is the bare minimum and won't give you the mini-preview or Settings features.
-The mini-preview is a pain to implement and to my mind, unnecessary. To support Settings you just
+The mini-preview is a pain to implement, and to my mind unnecessary. To support Settings you just
 need to handle the /S command line argument and display an appropriate UI. (I was too lazy to implement
 a Settings UI, but you might feel differently!)
 

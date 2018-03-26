@@ -15,6 +15,7 @@
     "url": "http://github.com/RandScullard/photo-screen-saver/issues"
   },
   "scripts": {
+    "build": "grunt",
     "start": "electron bin"
   },
   "dependencies": {
