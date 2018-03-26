@@ -18,18 +18,18 @@
     "start": "electron bin"
   },
   "dependencies": {
-    "concat-stream": "^1.6.0",
-    "electron": "^1.6.11",
+    "concat-stream": "^1.6.2",
+    "electron": "^1.8.4",
     "jquery": "^3.2.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.2.10",
-    "@types/node": "^8.0.19",
+    "@types/jquery": "^3.3.1",
+    "@types/node": "^8.10.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-electron": "^5.0.0",
-    "grunt-exec": "^2.0.0",
+    "grunt-electron": "^8.0.0",
+    "grunt-exec": "^3.0.0",
     "grunt-npm-command": "^0.1.2",
     "typescript": "^2.4.1"
   }
