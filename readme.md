@@ -23,8 +23,8 @@ on other platforms, but you won't get the screen saver integration with the OS.
 
 This screen saver displays a photo slideshow with a simple "Ken Burns" effect. It supports three photo sources:
 
+* <a href="https://www.flickr.com/">Flickr</a>: Photos from the group "Landscape Masterclass"
 * <a href="https://500px.com/">500px</a>: Photos from "Popular"
-* <a href="https://www.flickr.com/">Flickr</a>: Photos from "Explore"
 * A local folder on your computer
 
 Since I didn't feel like implementing a Settings window, you'll need to make some simple code changes to set up
@@ -32,26 +32,26 @@ a source. If you take a look at the top of `src/index.ts`, you'll find the follo
 says and uncomment *only* the source you want to use:
 
     // Uncomment ONE of the following photo sources:
-    import { getPhotos } from "./500px";
-    // import { getPhotos } from "./flickr";
+    import { getPhotos } from "./flickr";
+    // import { getPhotos } from "./500px";
     // import { getPhotos } from "./local-images";
 
 Then do one of the following:
 
-* **500px**: Get a 500px <a href="http://500px.com/settings/applications">consumer key</a> and put it in `src/api-keys.ts`:
-
-        export const _500PX_API_KEY = "<your consumer key goes here>";
-
 * **Flickr**: Get a Flickr <a href="https://www.flickr.com/services/api/keys/apply/">API key</a> and put it in `src/api-keys.ts`:
 
         export const FLICKR_API_KEY = "<your API key goes here>";
+
+* **500px**: Get a 500px <a href="http://500px.com/settings/applications">consumer key</a> and put it in `src/api-keys.ts`:
+
+        export const _500PX_API_KEY = "<your consumer key goes here>";
 
 * **Local**: Edit `src/local-images.ts` and set the FOLDER_PATH to point to your image folder:
 
         const FOLDER_PATH = "<your path goes here>";
 
 **A quick warning:** When you display random photos from the web, there's always a chance you'll get something you
-wouldn't want your kids, your grandma, or your boss to see. These 500px and Flickr API calls are supposed to
+wouldn't want your kids, your grandma, or your boss to see. These Flickr and 500px API calls are supposed to
 avoid anything NSFW, but photos do end up in the wrong category from time to time -- don't say I didn't warn you.
 If you want to stay on the safe side, you can always use your own local folder of photos.
 
@@ -88,7 +88,7 @@ a Settings UI, but you might feel differently!)
 ## Possibilities
 
 This project is a good (if minimal) framework for any screen saver you might want to create. For starters, you could
-change the 500px or Flickr API calls to get different types of photos. Or you could get photos from 
+change the Flickr or 500px API calls to get different types of photos. Or you could get photos from 
 another source entirely. If photos aren't your cup of tea, try Googling <a href="https://www.google.com/search?q=webgl+demo">WebGL demo</a>
 or <a href="https://www.google.com/search?q=three.js+demo">three.js demo</a>, pick the coolest animation you can
 find, and incorporate it into `index.ts` and `index.css`. <a href="https://codepen.io/">CodePen</a> is another 

@@ -4,7 +4,8 @@ import { FLICKR_API_KEY } from "./api-keys"
 import { Photo } from "./Photo"
 import { downloadString, isNullOrEmpty } from "./Utils"
 
-const FLICKR_URL = `https://api.flickr.com/services/rest?api_key=${FLICKR_API_KEY}&method=flickr.interestingness.getList&format=json&nojsoncallback=1&extras=url_k,owner_name&per_page=500`;
+// Group: Landscape Masterclass
+const FLICKR_URL = `https://api.flickr.com/services/rest?api_key=${FLICKR_API_KEY}&method=flickr.groups.pools.getPhotos&group_id=1887498%40N25&format=json&nojsoncallback=1&extras=url_k,owner_name&per_page=500`;
 
 interface FlickrError
 {

@@ -7,8 +7,8 @@ import { getRandom, isNullOrEmpty, shuffle } from "./utils";
 import { Photo } from "./photo";
 
 // Uncomment ONE of the following photo sources:
-import { getPhotos } from "./500px";
-// import { getPhotos } from "./flickr";
+import { getPhotos } from "./flickr";
+// import { getPhotos } from "./500px";
 // import { getPhotos } from "./local-images";
 
 
@@ -113,3 +113,9 @@ function loadNextImage(
 		})
 		.attr("src", photo.url);
 }
+
+// Since we are running in Electron, the "exports" global is undefined.
+// Adding this line of code prevents TypeScript from generating the following statement that depends on "exports":
+//    Object.defineProperty(exports, "__esModule", { value: true });
+// See: https://github.com/Microsoft/TypeScript/issues/14351
+export = {};
