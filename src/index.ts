@@ -22,13 +22,14 @@ $(() =>
 	window.setTimeout(run, 2100);
 });
 
-function run()
+async function run()
 {
 	setupEvents();
 
-	getPhotos()
-	.then(photos =>
+	try
 	{
+		let photos = await getPhotos();
+
 		if(photos.length === 0)
 			throw new Error("No photos found that meet criteria.");
 
@@ -37,12 +38,12 @@ function run()
 		shuffle(photos);
 		loadNextImage(photos);
 		window.setInterval(() => loadNextImage(photos), PHOTO_INTERVAL);
-	})
-	.catch(err =>
+	}
+	catch(err)
 	{
 		window.alert(err.toString());
 		window.close();
-	});
+	}
 }
 
 function setupEvents()

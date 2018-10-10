@@ -23,7 +23,7 @@ on other platforms, but you won't get the screen saver integration with the OS.
 
 This screen saver displays a photo slideshow with a simple "Ken Burns" effect. It supports three photo sources:
 
-* <a href="https://www.flickr.com/">Flickr</a>: Photos from the group "Landscape Masterclass"
+* <a href="https://www.flickr.com/">Flickr</a>: Photos from the group "Flickr's Best Landscape Photographers (Post 1 Award 2)"
 * <a href="https://500px.com/">500px</a>: Photos from "Popular"
 * A local folder on your computer
 

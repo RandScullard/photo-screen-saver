@@ -24,27 +24,25 @@ interface _500pxPhoto
 	}
 }
 
-export function getPhotos(): Promise<Photo[]>
+export async function getPhotos(): Promise<Photo[]>
 {
-	return downloadString(_500PX_URL)
-	.then(json =>
+	let json = await downloadString(_500PX_URL);
+
+	let photoData = JSON.parse(json) as _500pxPhotoData;
+
+	let photos = photoData.photos
+	.map(photo => ({
+		url: photo.images[0].url,
+		width: photo.width,
+		height: photo.height,
+		title: photo.name,
+		attribution: `© ${photo.user.fullname} / 500px`,
+	}))
+	.filter(photo => 
 	{
-		let photoData = JSON.parse(json) as _500pxPhotoData;
-
-		let photos = photoData.photos
-		.map(photo => ({
-			url: photo.images[0].url,
-			width: photo.width,
-			height: photo.height,
-			title: photo.name,
-			attribution: `© ${photo.user.fullname} / 500px`,
-		}))
-		.filter(photo => 
-		{
-			let aspectRatio = photo.width / photo.height;
-			return photo.width >= 1600 && aspectRatio >= 1.5 && aspectRatio <= 1.9;
-		});
-
-		return photos;
+		let aspectRatio = photo.width / photo.height;
+		return photo.width >= 1600 && aspectRatio >= 1.5 && aspectRatio <= 1.9;
 	});
+
+	return photos;
 }
