@@ -19,19 +19,19 @@
     "start": "electron bin"
   },
   "dependencies": {
-    "concat-stream": "^1.6.2",
-    "electron": "^3.0.3",
-    "grunt-electron": "^9.0.1",
-    "jquery": "^3.2.1"
+    "concat-stream": "^2.0.0",
+    "electron": "^5.0.1",
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
-    "@types/jquery": "^3.3.14",
-    "@types/node": "^8.10.36",
-    "grunt": "^1.0.3",
+    "@types/jquery": "^3.3.29",
+    "@types/node": "^12.0.2",
+    "grunt": "^1.0.4",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
+    "grunt-electron": "^10.0.0",
     "grunt-exec": "^3.0.0",
     "grunt-npm-command": "^0.1.2",
-    "typescript": "^3.1.2"
+    "typescript": "^3.4.5"
   }
 }

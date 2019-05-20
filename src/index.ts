@@ -1,8 +1,4 @@
 ﻿import * as $ from "jquery";
-import * as https from "https";
-import * as vm from "vm";
-import * as concat from "concat-stream";
-import * as fs from "fs";
 import { getRandom, isNullOrEmpty, shuffle } from "./utils";
 import { Photo } from "./photo";
 

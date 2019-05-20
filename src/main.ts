@@ -35,7 +35,7 @@ app.on("ready", () =>
 		//electron.dialog.showMessageBox({ message: process.argv.join("\n"), buttons: [ "OK" ] });
 	}
 
-	mainWindow = new BrowserWindow({ show: false, autoHideMenuBar: true });
+	mainWindow = new BrowserWindow({ show: false, autoHideMenuBar: true, webPreferences: { nodeIntegration: true } });
 	mainWindow.loadURL("file://" + __dirname + "/index.html");
 	mainWindow.on("closed", () => { mainWindow = null });
 	//mainWindow.webContents.openDevTools();
