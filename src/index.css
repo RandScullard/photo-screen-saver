@@ -12,6 +12,41 @@ body
 	cursor: none;
 }
 
+.cover
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: none;
+	opacity: 0.4;
+	z-index: 100;
+	background: black;
+	display: table;
+}
+
+.datetime{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+	opacity: 0.9;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+}
+
+.time{
+	padding-top: 50px;
+	transform: scaleY(2.0);
+	font-size: 23em;
+}
+
+.date{
+	margin-top: 150px;
+	font-size: 5em;
+}
+
 .photo
 {
 	position: absolute;
@@ -21,7 +56,7 @@ body
 	height: 100%;
 	cursor: none;
 	opacity: 0;
-	transition: opacity 5s linear, transform 65s linear;
+	transition: opacity 3s linear;
 }
 
 .photo.visible

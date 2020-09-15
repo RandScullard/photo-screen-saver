@@ -14,6 +14,28 @@ var currImageIdx = 0;
 
 $(() =>
 {
+	
+	let coverDiv = $("<div class='cover'/>")
+		.appendTo($(document.body));
+
+	window.setInterval(() => {
+		const weekName = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+		const now = new Date();
+		const time = 
+					("00" + now.getHours()).slice(-2) + ":" + 
+					("00" + now.getMinutes()).slice(-2) + ":" + 
+					("00" + now.getSeconds()).slice(-2) + "";
+		const date = now.getFullYear() + "/" + 
+					("00" + (now.getMonth() + 1)).slice(-2)  + "/" + 
+					("00" + now.getDate()).slice(-2) + " " + 
+					weekName[now.getDay()] + "";
+		
+		const timeDiv = `<div class='time'>${time}</div>`;
+		const dateDiv = `<div class='date'>${date}</div>`;
+		const datetimeDiv = `<div class='datetime'>${timeDiv}${dateDiv}</div>`
+		coverDiv.html(datetimeDiv);
+	}, 100);
+		
 	// Delay everything until the window is visible on-screen (see the delay in main.ts).
 	window.setTimeout(run, 2100);
 });
