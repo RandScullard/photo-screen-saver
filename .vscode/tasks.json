@@ -1,21 +1,36 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "type": "grunt",
-            "task": "build",
-            "problemMatcher": [
-                "$tsc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
-            "type": "npm",
-            "script": "start",
-            "problemMatcher": []
-        }
-    ]
+   "version": "2.0.0",
+   "tasks": [
+      {
+         "label": "build",
+         "type": "shell",
+         "command": "node_modules\\.bin\\grunt",
+         "args": [
+            "build"
+         ],
+         "problemMatcher": [],
+         "group": {
+            "kind": "build",
+            "isDefault": true
+         }
+      },
+      {
+         "label": "build and package",
+         "type": "shell",
+         "command": "node_modules\\.bin\\grunt",
+         "args": [
+            "default"
+         ],
+         "problemMatcher": []
+      },
+      {
+         "label": "clean",
+         "type": "shell",
+         "command": "node_modules\\.bin\\grunt",
+         "args": [
+            "clean"
+         ],
+         "problemMatcher": []
+      }
+   ]
 }

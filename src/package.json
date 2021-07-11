@@ -11,9 +11,5 @@
     "type": "git",
     "url": "git+https://github.com/RandScullard/photo-screen-saver.git"
   },
-  "main": "main.js",
-  "dependencies": {
-    "concat-stream": "^2.0.0",
-    "jquery": "^3.5.1"
-  }
+  "main": "main.js"
 }

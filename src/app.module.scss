@@ -1,0 +1,55 @@
+.root
+{
+   // Keep these in sync with app.tsx:
+   $PHOTO_INTERVAL: 60s;
+   $FADE_IN_DURATION: 5s;
+
+   .photo
+   {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: none;
+      opacity: 0;
+      transition: opacity $FADE_IN_DURATION linear, transform ($PHOTO_INTERVAL + $FADE_IN_DURATION) linear;
+
+      &.visible
+      {
+         opacity: 1;
+         transform: scale(1.3);
+      }
+
+      img
+      {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   label
+   {
+      display: block;
+      position: fixed;
+      white-space: nowrap;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 16px;
+      line-height: 16px;
+      opacity: 0;
+      transition: opacity $FADE_IN_DURATION linear;
+
+      &.visible
+      {
+         opacity: 1;
+      }
+
+      $margin: 10px;
+
+      &.pos0 { left:  $margin; top:    $margin; }
+      &.pos1 { right: $margin; top:    $margin; }
+      &.pos2 { right: $margin; bottom: $margin; }
+      &.pos3 { left:  $margin; bottom: $margin; }
+   }
+}

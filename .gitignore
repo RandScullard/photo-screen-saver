@@ -1,6 +1,5 @@
 .history/
-.localhistory/
-bin/
+build/
 graphic_design/
 node_modules/
 package/

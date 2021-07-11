@@ -15,23 +15,66 @@
     "url": "http://github.com/RandScullard/photo-screen-saver/issues"
   },
   "scripts": {
-    "build": "grunt",
-    "start": "electron bin"
+    "build-electron": "grunt",
+    "start-electron": "electron build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
-    "concat-stream": "^2.0.0",
-    "electron": "^12.0.7",
-    "jquery": "^3.6.0"
-  },
-  "devDependencies": {
-    "@types/jquery": "^3.5.5",
-    "@types/node": "^15.0.2",
-    "grunt": "^1.4.0",
+    "@types/node": "^16.0.0",
+    "@types/react": "^17.0.13",
+    "@types/react-dom": "^17.0.8",
+    "@types/react-transition-group": "^4.4.2",
+    "classnames": "^2.3.1",
+    "electron": "^13.1.5",
+    "grunt": "^1.4.1",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-electron": "^12.0.0",
+    "grunt-eslint": "^23.0.0",
     "grunt-exec": "^3.0.0",
-    "grunt-npm-command": "^0.1.2",
-    "typescript": "^4.2.4"
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-transition-group": "^4.4.2",
+    "typescript": "^4.3.5"
+  },
+  "homepage": "./",
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ],
+    "rules": {
+      "linebreak-style": [
+        "warn",
+        "windows"
+      ],
+      "quotes": [
+        "warn",
+        "double"
+      ],
+      "semi": [
+        "warn",
+        "never",
+        {
+          "beforeStatementContinuationChars": "always"
+        }
+      ],
+      "no-unexpected-multiline": "warn"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
