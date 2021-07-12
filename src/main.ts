@@ -43,14 +43,13 @@ app.on("ready", () =>
    mainWindow.on("closed", () => { mainWindow = null })
    // mainWindow.webContents.openDevTools()
 
-   // Normally we could set show, kiosk, and alwaysOnTop to true in the BrowserWindow options.
+   // Normally we could set show and kiosk to true in the BrowserWindow options.
    // We have to do this after a brief delay so that the CSS cursor:none will take effect
    // without the user having to move the mouse, and to avoid a flash of white screen while
    // the page initially paints.
    setTimeout(() => 
    {
       mainWindow!.setKiosk(true)
-      mainWindow!.setAlwaysOnTop(true)
       mainWindow!.show()
    }, 2000)
 })
