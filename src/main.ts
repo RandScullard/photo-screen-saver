@@ -1,8 +1,6 @@
 import { app, BrowserWindow, dialog } from "electron"
 import path from "path"
 
-let mainWindow = null as BrowserWindow|null
-
 // Quit when all windows are closed.
 app.on("window-all-closed", () =>
 {
@@ -33,23 +31,22 @@ app.on("ready", () =>
       // dialog.showMessageBox({ message: process.argv.join("\n"), buttons: ["OK"] })
    }
 
-   mainWindow = new BrowserWindow({
+   const mainWindow = new BrowserWindow({
       show: false,
       autoHideMenuBar: true,
+      backgroundColor: "#000",
       webPreferences: { preload: path.join(__dirname, "preload.js") },
    })
 
-   mainWindow.loadURL("file://" + __dirname + "/index.html")
-   mainWindow.on("closed", () => { mainWindow = null })
-   // mainWindow.webContents.openDevTools()
-
-   // Normally we could set show and kiosk to true in the BrowserWindow options.
-   // We have to do this after a brief delay so that the CSS cursor:none will take effect
-   // without the user having to move the mouse, and to avoid a flash of white screen while
-   // the page initially paints.
+   // We have to delay the following operations for a few seconds, otherwise the page doesn't get
+   // loaded when running in true screen saver mode. (The "blank white window" problem.)
    setTimeout(() => 
    {
+      mainWindow!.loadFile("index.html")
+      // mainWindow!.webContents.openDevTools()
+
       mainWindow!.setKiosk(true)
+      mainWindow!.setAlwaysOnTop(true)
       mainWindow!.show()
    }, 2000)
 })
