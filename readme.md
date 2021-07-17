@@ -31,16 +31,14 @@ sources:
 * A local folder on your computer
 
 Since I didn't feel like implementing a Settings window, you'll need to make some simple code
-changes to set up a source. If you take a look at the top of `src/app.tsx`, you'll find the
-following snippet of code. Do what it says and uncomment *only* the source you want to use:
+changes to set up a source. If you take a look at the top of `src/photoSlideshow.tsx`, you'll find
+the following line of code. Set `GET_PHOTOS` to either `getFlickrPhotos` or `getLocalPhotos`:
 
-    // Uncomment ONE of the following photo sources:
-    import { getPhotos } from "./flickr"
-    // import { getPhotos } from "./localPhotos"
+    const GET_PHOTOS: GetPhotosFn = getFlickrPhotos
 
 Then do one of the following:
 
-* **Flickr**: Get a Flickr <a href="https://www.flickr.com/services/api/keys/apply/">API key</a> and
+* **Flickr**: Get a Flickr <a href="https://www.flickr.com/services/apps/create/apply">API key</a> and
   put it in `src/constants.ts`:
 
       export const FLICKR_API_KEY = "<your API key goes here>";
@@ -57,9 +55,10 @@ folder of photos.
 
 ## How to Build
 
-**Install:** This project requires <a href="https://nodejs.org">Node.js</a> &mdash; if you've read
-this far, you probably already have it. Once you have Node.js, go to the project folder and run the
-following command:
+(This project requires <a href="https://nodejs.org">Node.js</a> &mdash; if you're reading
+this, you probably already have it.)
+
+**Install:** Go to the project folder and run the following command:
 
     npm install
 
@@ -73,7 +72,7 @@ and see what it does, go to the project folder and run:
     npm run start-electron
 
 **Screen Saver:** If you want to install the screen saver, look in the
-`package\photo-screen-saver-win32-x64` subfolder and find the file `photo-screen-saver.scr`.
+`package/photo-screen-saver-win32-x64` subfolder and find the file `photo-screen-saver.scr`.
 Right-click the file and choose `Install`. When the Windows screen saver settings appear, you'll see
 that `photo-screen-saver` is now your selected screen saver.
 
@@ -96,13 +95,25 @@ implement a Settings UI, but you might feel differently!)
 
 ## Possibilities
 
-This project makes a good starting point for any screen saver you might want to create. For
-example, you could change the Flickr API call to get different types of photos. If photos aren't
-your cup of tea, try searching for <a href="https://www.google.com/search?q=webgl+demo">WebGL
-demo</a> or <a href="https://www.google.com/search?q=three.js+demo">three.js demo</a>, pick the
-coolest animation you can find, and incorporate it into `app.tsx`.
-<a href="https://codepen.io/">CodePen</a> is another great source of inspiration. Whatever you use,
-make sure to comply with the license terms!
+This project makes a good starting point for any screen saver you want to create. You could start by
+changing the Flickr API call to get different types of photos. If photos aren't your cup of tea,
+there are a lot of cool animations on <a href="https://codepen.io/">CodePen</a> and <a
+href="https://www.shadertoy.com/">ShaderToy</a>. To get you started, there are four ready-to-run
+animation components included in this project, each one with a great-looking demo and each one
+illustrating a different basic approach to animation:
+
+* **DemoCanvas**: writes directly to an HTML5 Canvas
+* **DemoCss**: uses pure SCSS
+* **DemoShader**: implemented as a WebGL fragment shader
+* **DemoThreeJs**: uses Three.js to create a 3D animation
+
+At the top of `src/app.tsx` you'll find the following line of code. Set `SHOW_COMPONENT` to the
+component you want to see:
+
+    const SHOW_COMPONENT: ShowComponent = PhotoSlideshow
+
+You can create your own components using the demos as a template, and using your own code or
+examples you find on the web. Whatever you use, be sure to comply with the license terms!
 
 ## License
 

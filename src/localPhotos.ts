@@ -1,6 +1,6 @@
 import { Photo } from "./photo"
 
-export function getPhotos(): Promise<Photo[]>
+export function getLocalPhotos(): Promise<Photo[]>
 {
    const api = (window as any).api
 

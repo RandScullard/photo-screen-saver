@@ -4,5 +4,11 @@
    width: 100vw;
    height: 100vh;
    cursor: none;
-   outline: none;
+
+   canvas
+   {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+   }
 }

@@ -19,6 +19,16 @@ export function shuffle(
    }
 }
 
+export function closeWindow()
+{
+   // We only want to close the window when we're running in Electron, because it's annoying when
+   // you're testing in the browser and the window keeps closing. If we're running in the browser
+   // (testing in webpack-dev-server, for example) window.api won't be defined. It is only defined
+   // when Electron runs the script in preload.ts, and that script calls contextBridge.exposeInMainWorld.
+   if(typeof (window as any).api !== "undefined")
+      window.close()
+}
+
 export function delay(
    timeout: number)
 {

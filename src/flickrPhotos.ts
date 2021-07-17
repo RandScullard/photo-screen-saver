@@ -30,7 +30,7 @@ interface FlickrPhoto
    width_k: string,
 }
 
-export async function getPhotos(): Promise<Photo[]>
+export async function getFlickrPhotos(): Promise<Photo[]>
 {
    if(!FLICKR_API_KEY)
       throw new Error("To use the flickr module, you must set FLICKR_API_KEY in constants.ts.")
