@@ -48,5 +48,5 @@ app.on("ready", () =>
       mainWindow!.setKiosk(true)
       mainWindow!.setAlwaysOnTop(true)
       mainWindow!.show()
-   }, 2000)
+   }, 3000)
 })
