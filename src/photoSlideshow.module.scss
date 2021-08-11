@@ -35,16 +35,24 @@ $FADE_IN_DURATION: 5s;
       color: #fff9;
       background-color: #0003;
       backdrop-filter: blur(5px);
-      padding: 4px 9px;
+      padding: 3px 9px;
       border-radius: 5px;
       font-size: 16px;
       line-height: 16px;
+      cursor: none;
       opacity: 0;
       transition: opacity $FADE_IN_DURATION linear;
 
       &.visible
       {
          opacity: 1;
+      }
+
+      // Until CSS leading-trim is implemented, this little trick vertically centers the text in the label:
+      &::before
+      {
+         content: "";
+         vertical-align: middle;
       }
 
       $margin: 10px;
