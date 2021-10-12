@@ -28,7 +28,7 @@
     "@types/react-transition-group": "^4.4.2",
     "@types/three": "^0.130.0",
     "classnames": "^2.3.1",
-    "electron": "^13.1.5",
+    "electron": "^13.3.0",
     "glea": "^1.3.1",
     "grunt": "^1.4.1",
     "grunt-contrib-clean": "^2.0.0",
