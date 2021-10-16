@@ -37,7 +37,7 @@ export function PhotoSlideshow()
             shuffle(photos)
             dispatch({ type: "load", photos })
          }
-         catch(err)
+         catch(err: any)
          {
             window.alert(err.toString())
             closeWindow()
