@@ -4,12 +4,13 @@ import classNames from "classnames"
 import { closeWindow, delay, getRandom, shuffle } from "./utils"
 import { Photo } from "./photo"
 import { getFlickrPhotos } from "./flickrPhotos"
+import { getUnsplashPhotos } from "./unsplashPhotos"
 import { getLocalPhotos } from "./localPhotos"
 import styles from "./photoSlideshow.module.scss"
 
 // Choose the source for the photos you want to display:
-type GetPhotosFn = typeof getFlickrPhotos | typeof getLocalPhotos
-const GET_PHOTOS: GetPhotosFn = getFlickrPhotos
+type GetPhotosFn = typeof getFlickrPhotos | typeof getUnsplashPhotos | typeof getLocalPhotos
+const GET_PHOTOS: GetPhotosFn = getUnsplashPhotos
 
 // Keep these in sync with photoSlideshow.module.scss:
 const PHOTO_INTERVAL = 60
