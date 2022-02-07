@@ -23,20 +23,28 @@ other platforms, but you won't get the screen saver integration with the OS.
 
 ## Before You Build
 
-This screen saver displays a photo slideshow with a simple "Ken Burns" effect. It supports two photo
-sources:
+This screen saver displays a photo slideshow with a simple "Ken Burns" effect. It supports three
+photo sources:
 
+* <a href="https://unsplash.com/">Unsplash</a>: Photos tagged `mountain`, `ocean`, or `forest`
 * <a href="https://www.flickr.com/">Flickr</a>: Photos from the group "Flickr's Best Landscape
   Photographers (Post 1 Award 2)"
 * A local folder on your computer
 
 Since I didn't feel like implementing a Settings window, you'll need to make some simple code
 changes to set up a source. If you take a look at the top of `src/photoSlideshow.tsx`, you'll find
-the following line of code. Set `GET_PHOTOS` to either `getFlickrPhotos` or `getLocalPhotos`:
+the following line of code. Set `GET_PHOTOS` to `getUnsplashPhotos`, `getFlickrPhotos`, or
+`getLocalPhotos`:
 
-    const GET_PHOTOS: GetPhotosFn = getFlickrPhotos
+    const GET_PHOTOS: GetPhotosFn = getUnsplashPhotos
 
 Then do one of the following:
+
+* **Unsplash**: Get an Unsplash <a
+  href="https://unsplash.com/documentation#creating-a-developer-account">API key</a> and put it in
+  `src/constants.ts`:
+
+      export const UNSPLASH_API_KEY = "<your API key goes here>";
 
 * **Flickr**: Get a Flickr <a href="https://www.flickr.com/services/apps/create/apply">API key</a> and
   put it in `src/constants.ts`:
@@ -48,7 +56,7 @@ Then do one of the following:
       export const LOCAL_FOLDER_PATH = "<your path goes here>";
 
 **A quick warning:** When you display random photos from the web, there's always a chance you'll get
-something you wouldn't want your kids, your grandma, or your boss to see. The Flickr API call is set
+something you wouldn't want your kids, your grandma, or your boss to see. The API calls are set
 up to avoid anything NSFW, but photos do end up in the wrong category from time to time &mdash;
 don't say I didn't warn you. If you want to stay on the safe side, you can always use your own local
 folder of photos.
@@ -96,7 +104,7 @@ implement a Settings UI, but you might feel differently!)
 ## Possibilities
 
 This project makes a good starting point for any screen saver you want to create. You could start by
-changing the Flickr API call to get different types of photos. If photos aren't your cup of tea,
+changing the Unsplash API call to get different types of photos. If photos aren't your cup of tea,
 there are a lot of cool animations on <a href="https://codepen.io/">CodePen</a> and <a
 href="https://www.shadertoy.com/">ShaderToy</a>. To get you started, there are four ready-to-run
 animation components included in this project, each one with a great-looking demo and each one
@@ -112,8 +120,8 @@ component you want to see:
 
     const SHOW_COMPONENT: ShowComponent = PhotoSlideshow
 
-You can create your own components using the demos as a template, and using your own code or
-examples you find on the web. Whatever you use, be sure to comply with the license terms!
+You can create your own components using the demos as a template. Use your own code or examples you
+find on the web. Whatever you use, be sure to comply with the license terms!
 
 ## License
 
